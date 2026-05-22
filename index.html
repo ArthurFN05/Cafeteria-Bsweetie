@@ -1,0 +1,923 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>B.Sweetie Café</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#fffaf6;
+    color:#3d2419;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+header{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    padding:22px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    transition:.4s;
+}
+
+header.active{
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo img{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+}
+
+.logo h2{
+    font-size:1.8rem;
+    color:#5d3425;
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#5d3425;
+    font-weight:500;
+    position:relative;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#ff4fa0;
+    left:0;
+    bottom:-5px;
+    transition:.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+.mobile{
+    display:none;
+    font-size:2rem;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:150px 8% 100px;
+    gap:70px;
+    background:
+    radial-gradient(circle at top left,#8ff5ea33,transparent 30%),
+    radial-gradient(circle at bottom right,#ff4fa022,transparent 30%);
+}
+
+.hero-text{
+    flex:1;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 20px;
+    background:#8ff5ea;
+    border-radius:50px;
+    color:#5d3425;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:5rem;
+    line-height:1;
+    margin-bottom:25px;
+    color:#4a2418;
+}
+
+.hero h1 span{
+    color:#ff4fa0;
+}
+
+.hero p{
+    max-width:550px;
+    line-height:1.9;
+    color:#6f5247;
+    margin-bottom:35px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:16px 35px;
+    border:none;
+    border-radius:50px;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.primary{
+    background:#ff4fa0;
+    color:white;
+}
+
+.secondary{
+    background:white;
+    color:#5d3425;
+    border:2px solid #8ff5ea;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+.hero-image{
+    flex:1;
+    position:relative;
+}
+
+.hero-image img{
+    width:100%;
+    height:720px;
+    object-fit:cover;
+    border-radius:35px;
+    box-shadow:0 30px 60px rgba(0,0,0,.12);
+}
+
+.float{
+    position:absolute;
+    bottom:30px;
+    left:-30px;
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.float h3{
+    color:#ff4fa0;
+    margin-bottom:8px;
+}
+
+/* SECTION TITLE */
+
+.title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.title span{
+    font-family:'Great Vibes',cursive;
+    color:#ff4fa0;
+    font-size:2.2rem;
+}
+
+.title h2{
+    font-size:3.5rem;
+    color:#4a2418;
+}
+
+/* FEATURES */
+
+.features{
+    padding:100px 8%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:45px;
+    border-radius:30px;
+    transition:.4s;
+    border:2px solid #f5ece7;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#8ff5ea;
+}
+
+.card h3{
+    margin:20px 0 15px;
+    color:#5d3425;
+    font-size:1.5rem;
+}
+
+.card p{
+    color:#6f5247;
+    line-height:1.8;
+}
+
+/* MENU */
+
+.menu{
+    padding:120px 8%;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.item{
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+    transition:.4s;
+    box-shadow:0 10px 30px rgba(0,0,0,.04);
+}
+
+.item:hover{
+    transform:translateY(-10px);
+}
+
+.item img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.content{
+    padding:25px;
+}
+
+.content h3{
+    font-size:1.4rem;
+    margin-bottom:10px;
+}
+
+.content p{
+    line-height:1.8;
+    color:#6f5247;
+    margin-bottom:15px;
+}
+
+.price{
+    color:#ff4fa0;
+    font-weight:700;
+    font-size:1.2rem;
+}
+
+/* CARDAPIO */
+
+.cardapio{
+    padding:120px 8%;
+}
+
+.cardapio-box{
+    background:white;
+    border-radius:35px;
+    padding:50px;
+    box-shadow:0 20px 50px rgba(0,0,0,.05);
+}
+
+.cardapio-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:50px;
+}
+
+.category h3{
+    font-family:'Great Vibes',cursive;
+    font-size:3rem;
+    margin-bottom:30px;
+    color:#ff4fa0;
+}
+
+.food{
+    margin-bottom:25px;
+    border-bottom:1px solid #eee;
+    padding-bottom:15px;
+}
+
+.food-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+}
+
+.food-top h4{
+    font-size:1.1rem;
+}
+
+.food-top span{
+    color:#5d3425;
+    font-weight:700;
+}
+
+.food p{
+    color:#6f5247;
+    line-height:1.6;
+    font-size:.95rem;
+}
+
+/* ABOUT */
+
+.about{
+    padding:120px 8%;
+    display:flex;
+    align-items:center;
+    gap:70px;
+}
+
+.about img{
+    width:100%;
+    border-radius:35px;
+    height:650px;
+    object-fit:cover;
+}
+
+.about-image{
+    flex:1;
+}
+
+.about-text{
+    flex:1;
+}
+
+.about-text span{
+    font-family:'Great Vibes',cursive;
+    color:#ff4fa0;
+    font-size:2rem;
+}
+
+.about-text h2{
+    font-size:3.5rem;
+    margin:20px 0;
+    color:#4a2418;
+}
+
+.about-text p{
+    color:#6f5247;
+    line-height:2;
+    margin-bottom:25px;
+}
+
+/* CONTACT */
+
+.contact{
+    padding:120px 8%;
+    text-align:center;
+}
+
+.contact-box{
+    background:
+    linear-gradient(135deg,#ff4fa0,#ff7eb8);
+    border-radius:40px;
+    padding:80px;
+    color:white;
+}
+
+.contact h2{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.contact p{
+    line-height:1.9;
+    margin-bottom:35px;
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px;
+    text-align:center;
+    color:#8a6a5f;
+}
+
+/* WHATS */
+
+.whats{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#25d366;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-decoration:none;
+    font-size:1.7rem;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:1100px){
+
+    .hero{
+        flex-direction:column;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        flex-direction:column;
+    }
+
+    .cardapio-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:800px){
+
+    nav{
+        position:absolute;
+        top:100px;
+        right:-100%;
+        background:white;
+        width:240px;
+        flex-direction:column;
+        padding:30px;
+        border-radius:20px;
+        transition:.4s;
+    }
+
+    nav.active{
+        right:8%;
+    }
+
+    .mobile{
+        display:block;
+    }
+
+    .hero h1{
+        font-size:3.2rem;
+    }
+
+    .title h2,
+    .about-text h2,
+    .contact h2{
+        font-size:2.5rem;
+    }
+
+    .hero-image img{
+        height:500px;
+    }
+
+    .about img{
+        height:500px;
+    }
+
+    .contact-box{
+        padding:50px 30px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header id="header">
+
+<div class="logo">
+
+
+<h2>Cafeteria BSweetie</h2>
+
+</div>
+
+<nav id="nav">
+
+<a href="#home">Home</a>
+<a href="#menu">Destaques</a>
+<a href="#cardapio">Cardápio</a>
+<a href="#about">Sobre</a>
+<a href="#contact">Contato</a>
+
+</nav>
+
+<div class="mobile" id="mobile">
+☰
+</div>
+
+</header>
+
+<section class="hero" id="home">
+
+<div class="hero-text">
+
+<div class="badge">
+DONUTS • CAFÉS • DOCES
+</div>
+
+<h1>
+O café mais
+<span>instagramável</span>
+de BH
+</h1>
+
+<p>
+Uma experiência premium com cafés especiais,
+donuts artesanais, pizzas, ciabattas e doces incríveis
+no coração do Prado.
+</p>
+
+<div class="buttons">
+
+<button class="btn primary">
+Ver Cardápio
+</button>
+
+<button class="btn secondary">
+Instagram
+</button>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop">
+
+<div class="float">
+
+<h3>+5 mil clientes</h3>
+<p>Experiência premium em BH</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="card">
+
+<h3>Donuts Artesanais</h3>
+
+<p>
+Sabores únicos, recheios cremosos e coberturas premium.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Cafés Especiais</h3>
+
+<p>
+Bebidas preparadas com grãos selecionados e muito sabor.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Ambiente Cozy</h3>
+
+<p>
+Espaço moderno e perfeito para encontros e fotos.
+</p>
+
+</div>
+
+</section>
+
+<section class="menu" id="menu">
+
+<div class="title">
+
+<span>Destaques</span>
+
+<h2>
+Favoritos da casa
+</h2>
+
+</div>
+
+<div class="menu-grid">
+
+<div class="item">
+
+<img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1200&auto=format&fit=crop">
+
+<div class="content">
+
+<h3>Donut Chocolate</h3>
+
+<p>
+Cobertura premium com recheio artesanal.
+</p>
+
+<div class="price">
+R$18,90
+</div>
+
+</div>
+
+</div>
+
+<div class="item">
+
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop">
+
+<div class="content">
+
+<h3>Cappuccino Cremoso</h3>
+
+<p>
+Café intenso com espuma cremosa.
+</p>
+
+<div class="price">
+R$15
+</div>
+
+</div>
+
+</div>
+
+<div class="item">
+
+<img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?q=80&w=1200&auto=format&fit=crop">
+
+<div class="content">
+
+<h3>Brownie Especial</h3>
+
+<p>
+Brownie macio com chocolate premium.
+</p>
+
+<div class="price">
+R$16
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cardapio" id="cardapio">
+
+<div class="title">
+
+<span>Nosso Menu</span>
+
+<h2>
+Cardápio
+</h2>
+
+</div>
+
+<div class="cardapio-box">
+
+<div class="cardapio-grid">
+
+<div class="category">
+
+<h3>Ciabatta</h3>
+
+<div class="food">
+
+<div class="food-top">
+<h4>Burguer</h4>
+<span>R$36,90</span>
+</div>
+
+<p>
+Hambúrguer cara preta, bacon, queijo canastra e rúcula.
+</p>
+
+</div>
+
+<div class="food">
+
+<div class="food-top">
+<h4>Copa Lombo</h4>
+<span>R$29,90</span>
+</div>
+
+<p>
+Copa lombo, queijo canastra, rúcula e geleia.
+</p>
+
+</div>
+
+<div class="food">
+
+<div class="food-top">
+<h4>Peito de Peru</h4>
+<span>R$29,90</span>
+</div>
+
+<p>
+Peito de peru, queijo canastra e frutas vermelhas.
+</p>
+
+</div>
+
+</div>
+
+<div class="category">
+
+<h3>Cafés</h3>
+
+<div class="food">
+
+<div class="food-top">
+<h4>Expresso</h4>
+<span>R$7</span>
+</div>
+
+<p>
+Café expresso moído na hora.
+</p>
+
+</div>
+
+<div class="food">
+
+<div class="food-top">
+<h4>Cappuccino Italiano</h4>
+<span>R$13</span>
+</div>
+
+<p>
+Expresso com espuma cremosa de leite.
+</p>
+
+</div>
+
+<div class="food">
+
+<div class="food-top">
+<h4>Affogato</h4>
+<span>R$15</span>
+</div>
+
+<p>
+Expresso com bola de sorvete.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="about" id="about">
+
+<div class="about-image">
+
+<img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div class="about-text">
+
+<span>Sobre Nós</span>
+
+<h2>
+Mais que uma cafeteria,
+uma experiência.
+</h2>
+
+<p>
+A B.Sweetie une cafés especiais,
+doces artesanais e um ambiente acolhedor
+para transformar cada visita em um momento único.
+</p>
+
+<p>
+Cada detalhe foi pensado para criar
+uma experiência moderna, sofisticada
+e perfeita para compartilhar.
+</p>
+
+<button class="btn primary">
+Conhecer Espaço
+</button>
+
+</div>
+
+</section>
+
+<section class="contact" id="contact">
+
+<div class="contact-box">
+
+<h2>
+Visite a B.Sweetie
+</h2>
+
+<p>
+R. Rio Negro, 627 - Prado, Belo Horizonte - MG
+</p>
+
+<p>
+Segunda a Sábado • 08h às 22h
+</p>
+
+<button class="btn secondary">
+Falar no WhatsApp
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 B.Sweetie Café — Todos os direitos reservados.
+
+</footer>
+
+<a href="#" class="whats">
+✆
+</a>
+
+<script>
+
+const header = document.getElementById("header");
+
+window.addEventListener("scroll",()=>{
+
+    header.classList.toggle("active",window.scrollY > 50);
+
+});
+
+const mobile = document.getElementById("mobile");
+const nav = document.getElementById("nav");
+
+mobile.addEventListener("click",()=>{
+
+    nav.classList.toggle("active");
+
+});
+
+</script>
+
+</body>
+</html>
+
